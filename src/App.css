@@ -1,5 +1,30 @@
-.App {
+.App,
+.center {
     text-align: center;
+}
+
+.text {
+    text-align: justify
+}
+
+.scroll {
+    height: 86vh;
+    overflow: auto;
+}
+
+.icon {
+    height: 50px;
+}
+
+main {
+    padding-top: 50px;
+}
+
+.leaf {
+    background: #444444;
+    border-radius: 20px;
+    margin: 20px;
+    padding: 20px;
 }
 
 .App-logo {

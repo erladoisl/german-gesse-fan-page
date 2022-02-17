@@ -1,0 +1,10 @@
+.avatar {
+    height: 180px;
+    width: auto;
+    border-radius: 10px;
+}
+
+.container {
+    padding: 15px;
+    text-align: justify;
+}

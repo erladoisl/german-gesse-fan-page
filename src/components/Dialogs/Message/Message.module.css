@@ -1,0 +1,7 @@
+.right {
+    text-align: -webkit-right;
+}
+
+.right div {
+    flex-direction: row-reverse;
+}

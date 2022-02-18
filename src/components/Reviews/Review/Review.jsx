@@ -8,12 +8,12 @@ const Review = (props) => {
         <div className={c.review + ' container'}>
             <div className='row'>
                 <div className={`${c.user_info} col-2`}>
-                    <Author ava_url = {props.ava_url} name = {props.name} />
-                    <Title title = {props.title} />
-                    
+                    <Author ava_url={props.ava_url} name={props.name} />
+                    <Title title={props.title} />
+
                     <div className='row mx-auto'>
-                        {[...Array(Number(props.stars)).keys()].map(() => {
-                            return <Star />
+                        {[...Array(Number(props.stars)).keys()].map((item, index) => {
+                            return <Star key ={`message_${index}`}/>
                         })}
                     </div>
                 </div>

@@ -12,11 +12,11 @@ const App = (props) => {
     {
         'link': '/dialogs/*', 'node': <Dialogs chats={props.chat_widget.chats}
             cur_chat_id={props.chat_widget.cur_chat_id}
-            user={props.user} />
+            user={props.user}/>
     },
-    { 'link': '/books', 'node': <Profile content={props.about_gesse} /> },
+    // { 'link': '/books', 'node': < /> },
     { 'link': '/reviews', 'node': <Reviews reviews={props.reviews} /> },
-    { 'link': '/storage', 'node': <Profile content={props.about_gesse} /> },
+    // { 'link': '/store', 'node': < /> },
     { 'link': '/gallery', 'node': <Gallery content={props.gallery_content} /> }]
 
     return (

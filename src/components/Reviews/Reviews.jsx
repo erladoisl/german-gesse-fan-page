@@ -4,7 +4,7 @@ import c from './Reviews.module.css'
 const Reviews = (props) => {
     return (
         <div className="bg-dark text-white">
-            <h3 className={c.center}>All reviews:</h3>
+            <h3 className={c.center}>Все рецензии:</h3>
 
             {props.reviews.map((r, index) => {
                 return (

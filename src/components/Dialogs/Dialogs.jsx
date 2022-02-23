@@ -1,6 +1,7 @@
 import Dialog from './Dialog/Dialog'
 import Message from './Message/Message'
 import { useLocation } from 'react-router-dom'
+import Avatar from './Avatar/Avatar'
 
 const Dialogs = (props) => {
   const location = useLocation()
@@ -14,27 +15,39 @@ const Dialogs = (props) => {
           <div className="d-flex p-3 link-dark border-bottom">
             <span className="fs-5 fw-semibold">Чаты:</span>
           </div>
-          <div className="list-group list-group-flush border-bottom scrollarea">
-            {props.chats.map((chat, index) => {
+          <div className="list-group list-group-flush border-bottom scrollarea col">
+            {props.content.dialogs.map((chat, index) => {
               return (
                 <Dialog dialogId={index}
                   author={chat.name}
                   data={chat.messages[chat.messages.length - 1].data}
                   text={chat.messages[chat.messages.length - 1].text}
-                  key={`message_${index}`} />
+                  key={`message_${index}`}
+                  active={index === props.content.cur_dialog_id ? true : false}
+                  avatar_url={chat.ava_url} />
               )
             })}
           </div>
         </div>
         <div className="scroll col-9 bg-white">
           <div className="d-flex p-3 link-dark border-bottom">
-            <span className="fs-5 fw-semibold">{props.chats[dialogId].name}</span>
+            <div className='col-1 px-0'>
+              <Avatar avatar_url={props.content.dialogs[dialogId].ava_url} />
+            </div>
+            <div className='col-9 my-auto'>
+              <div className='row'>
+                <span className="fs-5 fw-semibold">{props.content.dialogs[dialogId].name}</span>
+              </div>
+              <div className='row'>
+                <span className="">{props.content.dialogs[dialogId].last_seen !== 'online' ? `Последний раз был(а): ${props.content.dialogs[dialogId].last_seen}` : 'online'}</span>
+              </div>
+            </div>
           </div>
           <div className="list-group list-group-flush border-bottom scrollarea">
-            {props.chats[dialogId].messages.map((message, index) => {
+            {props.content.dialogs[dialogId].messages.map((message, index) => {
               return (
                 <Message dialogId={dialogId}
-                  author={(message.user_id === props.user.user_id) ? props.user.name : props.chats[dialogId].name}
+                  author={(message.user_id === props.user.user_id) ? props.user.name : props.content.dialogs[dialogId].name}
                   data={message.data} text={message.text}
                   right={message.user_id === props.user.user_id}
                   key={`message_${index}`} />

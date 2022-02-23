@@ -10,8 +10,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 const App = (props) => {
     const pages = [{ 'link': '/', 'node': <MainPage content={props.state.main_page_content} /> },
     {
-        'link': '/dialogs/*', 'node': <Dialogs chats={props.state.chat_widget.chats}
-            cur_chat_id={props.state.chat_widget.cur_chat_id}
+        'link': '/dialogs/*', 
+        'node': <Dialogs content={props.state.dialogs_content}
             user={props.state.user}/>
     },
     // { 'link': '/books', 'node': < /> },

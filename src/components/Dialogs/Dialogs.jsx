@@ -2,11 +2,15 @@ import Dialog from './Dialog/Dialog'
 import Message from './Message/Message'
 import { useLocation } from 'react-router-dom'
 import Avatar from './Avatar/Avatar'
+import NewMessage from './NewMessage/NewMessage'
+import React from 'react';
 
 const Dialogs = (props) => {
-  const location = useLocation()
-  const dialogId = location.state ? location.state.dialogId : 0
-  // console.log(dialogId)
+  const { dialogs, cur_dialog_id } = props.content;
+  const location = useLocation();
+  const dialogId = location.state ? location.state.dialogId : 0;
+  console.log(`go to ${dialogId} dialog`);
+
 
   return (
     <div className="bg-dark text-white container">
@@ -16,20 +20,20 @@ const Dialogs = (props) => {
             <span className="fs-5 fw-semibold">Чаты:</span>
           </div>
           <div className="list-group list-group-flush border-bottom scrollarea col">
-            {props.content.dialogs.map((chat, index) => {
+            {Object.keys(dialogs).map((id, index) => {
               return (
                 <Dialog dialogId={index}
-                  author={chat.name}
-                  data={chat.messages[chat.messages.length - 1].data}
-                  text={chat.messages[chat.messages.length - 1].text}
+                  author={dialogs[id].name}
+                  data={dialogs[id].messages[dialogs[id].messages.length - 1].data}
+                  text={dialogs[id].messages[dialogs[id].messages.length - 1].text}
                   key={`message_${index}`}
-                  active={index === props.content.cur_dialog_id ? true : false}
-                  avatar_url={chat.ava_url} />
+                  active={index === cur_dialog_id ? true : false}
+                  avatar_url={dialogs[id].ava_url} />
               )
             })}
           </div>
         </div>
-        <div className="scroll col-9 bg-white">
+        <div className="scroll col-9 bg-white ">
           <div className="d-flex p-3 link-dark border-bottom">
             <div className='col-1 px-0'>
               <Avatar avatar_url={props.content.dialogs[dialogId].ava_url} />
@@ -53,6 +57,7 @@ const Dialogs = (props) => {
                   key={`message_${index}`} />
               )
             })}
+            <NewMessage dialogId={dialogId} user={props.user} addMessage = {props.addMessage} />
           </div>
         </div>
       </div>

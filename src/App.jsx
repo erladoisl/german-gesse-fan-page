@@ -5,19 +5,22 @@ import Header from './components/Header/Header';
 import Dialogs from './components/Dialogs/Dialogs';
 import Reviews from './components/Reviews/Reviews';
 import Gallery from './components/Gallery/Gallery';
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AddReview from './components/Reviews/AddReview/AddReview';
 
 const App = (props) => {
     const pages = [{ 'link': '/', 'node': <MainPage content={props.state.main_page_content} /> },
     {
-        'link': '/dialogs/*', 
-        'node': <Dialogs content={props.state.dialogs_content}
-            user={props.state.user}/>
+        'link': '/dialogs/*',
+        node: <Dialogs content={props.state.dialogs_content}
+            user={props.state.user} />
     },
     // { 'link': '/books', 'node': < /> },
-    { 'link': '/reviews', 'node': <Reviews reviews={props.state.reviews} /> },
+    { 'link': '/reviews', 'node': <Reviews reviews={props.state.reviews}/> },
     // { 'link': '/store', 'node': < /> },
-    { 'link': '/gallery', 'node': <Gallery content={props.state.gallery_content} /> }]
+    { 'link': '/gallery', 'node': <Gallery content={props.state.gallery_content} /> },
+    { 'link': '/add_review', 'node': <AddReview addReview={props.addReview} /> }]
 
     return (
         <BrowserRouter>
@@ -37,5 +40,4 @@ const App = (props) => {
         </BrowserRouter>
     );
 }
-
 export default App;

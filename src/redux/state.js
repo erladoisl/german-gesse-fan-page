@@ -147,4 +147,17 @@ let state = {
     user: { 'user_id': 1, 'name': 'Рахина' }
 }
 
+export let addReview = (message, name, stars, title, ava_url, email = '') => {
+    let new_review = {
+        id: state.lenght,
+        message,
+        name,
+        stars,
+        title,
+        ava_url
+    };
+
+    state.reviews.push(new_review)
+}
+
 export default state

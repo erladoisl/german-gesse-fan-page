@@ -4,10 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import state from './redux/state.js'
+import { addReview } from './redux/state.js'
+
+addReview('created at index.js', 'Rakhina', '5', 'my new review', '')
 
 ReactDOM.render(
     <React.StrictMode>
-        <App state={state} />
+        <App state={state} addReview={addReview}/>
     </React.StrictMode>,
     document.getElementById('root') // То есть компонента App вставляется в html в узел root
 );

@@ -13,12 +13,12 @@ const Review = (props) => {
 
                     <div className='row mx-auto'>
                         {[...Array(Number(props.stars)).keys()].map((item, index) => {
-                            return <Star key ={`message_${index}`}/>
+                            return <Star key ={`content_${index}`}/>
                         })}
                     </div>
                 </div>
                 <div className={c.text + ' col'}>
-                    {props.message}
+                    {props.content}
                 </div>
             </div>
             <hr />

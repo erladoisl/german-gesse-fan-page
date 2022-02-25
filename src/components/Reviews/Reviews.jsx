@@ -17,7 +17,7 @@ const Reviews = (props) => {
             </div>
             {reviews.map((r, index) => {
                 return (
-                    <Review message={r.message}
+                    <Review content={r.content}
                         name={r.name}
                         stars={r.stars}
                         title={r.title}

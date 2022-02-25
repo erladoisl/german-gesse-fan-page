@@ -10,21 +10,23 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddReview from './components/Reviews/AddReview/AddReview';
 
 const App = (props) => {
-    const pages = [{ 'link': '/', 'node': <MainPage content={props.state.main_page_content} /> },
+    const {addReview, addMessage, updateNewReview, state} = props
+    const { main_page_content, dialogs_content, user, gallery_content, review_page_content, navlinks, footer } = state
+    const pages = [{ 'link': '/', 'node': <MainPage content={main_page_content} /> },
     {
         'link': '/dialogs/*',
-        node: <Dialogs content={props.state.dialogs_content}
-            user={props.state.user} />
+        node: <Dialogs content={dialogs_content}
+            user={user} addMessage={addMessage} />
     },
     // { 'link': '/books', 'node': < /> },
-    { 'link': '/reviews', 'node': <Reviews reviews={props.state.reviews}/> },
+    { 'link': '/reviews', 'node': <Reviews reviews={review_page_content.reviews} /> },
     // { 'link': '/store', 'node': < /> },
-    { 'link': '/gallery', 'node': <Gallery content={props.state.gallery_content} /> },
-    { 'link': '/add_review', 'node': <AddReview addReview={props.addReview} /> }]
+    { 'link': '/gallery', 'node': <Gallery content={gallery_content} /> },
+    { 'link': '/add_review', 'node': <AddReview new_review={review_page_content.new_review} addReview={addReview} updateNewReview={updateNewReview} /> }]
 
     return (
         <BrowserRouter>
-            <Header navlinks={props.state.navlinks} />
+            <Header navlinks={navlinks} />
             <main role="main" className='container'>
                 <div className='row' >
                     <main className='ms-sm-auto px-md-0'>
@@ -36,7 +38,7 @@ const App = (props) => {
                     </main>
                 </div>
             </main>
-            <Footer content={props.state.footer} />
+            <Footer content={footer} />
         </BrowserRouter>
     );
 }

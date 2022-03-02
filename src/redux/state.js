@@ -1,6 +1,8 @@
-import { renderPage } from '../render'
+let renderPage = () => {
+    console.log('state changed');
+}
 
-let state = {
+export let state = {
     navlinks: [
         { 'link': '/', 'text': 'Главная' },
         { 'link': '/reviews', 'text': 'Рецензии' },
@@ -195,4 +197,6 @@ export let addMessage = (id, user_id, text) => {
     renderPage(state, addReview, addMessage, updateNewReview);
 }
 
-export default state
+export const subscribe = (observer) => {
+    renderPage = observer;
+}

@@ -179,9 +179,6 @@ let store = {
         this._callSubscriber = observer;
     },
     dispatch(action) {
-        console.log('in state.js')
-        console.log(action)
-
         if (action.type === 'ADD-MESSAGE') {
             console.log(action)
             let new_message = {

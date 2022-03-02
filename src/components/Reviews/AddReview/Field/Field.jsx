@@ -6,7 +6,7 @@ const Field = (props) => {
     return (
         <div className={`col-sm-${col}`}>
             <label className="form-label">{description}</label>
-            {renderSwitchNode(type, placeholder, ref, value, key, props.updateNewReview)}
+            {renderSwitchNode(type, placeholder, ref, value, key, props.dispatch)}
             <div className="invalid-feedback" >
                 {invalidFeedback}
             </div>
@@ -14,19 +14,19 @@ const Field = (props) => {
     )
 }
 
-const renderSwitchNode = function (type, placeholder, ref, value, key, updateNewReview) {
+const renderSwitchNode = function (type, placeholder, ref, value, key, dispatch) {
     const onFieldChange = () => {
         value = ref.current.value;
         console.log(value)
-        updateNewReview(key, value)
+        dispatch({type: 'UPDATE-NEW-REVIEW', key, value})
     }
     
     switch (type) {
         case 'text':
-            return <input ref={ref} type="text" className="form-control" placeholder={`${placeholder}`} defaultValue="" required="" value={value} onChange={ onFieldChange } />;
+            return <input ref={ref} type="text" className="form-control" placeholder={`${placeholder}`} required="" value={value} onChange={ onFieldChange } />;
         case 'textarea':
             return (
-                <textarea ref={ref} type="textarea" className={`${c.review_field} form-control`} id="firstName" placeholder="" defaultValue="" required="" value={value} onChange={ onFieldChange }>
+                <textarea ref={ref} type="textarea" className={`${c.review_field} form-control`} id="firstName" placeholder="" required="" value={value} onChange={ onFieldChange }>
                     {value}
                 </textarea>);
         default:

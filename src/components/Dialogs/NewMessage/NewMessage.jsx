@@ -1,14 +1,16 @@
 import React from "react"
 
 const NewMessage = (props) => {
+    const dispatch = props.dispatch
+    debugger
     let message = React.createRef()
   
     const addMessage = () => {
         console.log(props.dialogId)
         console.log(props.user.user_id)
         console.log(message.current.value)
-        props.addMessage(props.dialogId, props.user.user_id,
-        message.current.value)
+        console.log('in component')
+        dispatch({type: 'ADD-MESSAGE', id: props.dialogId, user_id: props.user.user_id, text: message.current.value})
         message.current.value = ''
     };
     

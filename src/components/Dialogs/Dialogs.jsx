@@ -57,7 +57,7 @@ const Dialogs = (props) => {
                   key={`message_${index}`} />
               )
             })}
-            <NewMessage dialogId={dialogId} user={props.user} addMessage = {props.addMessage} />
+            <NewMessage dialogId={dialogId} user={props.user} dispatch = {props.dispatch} />
           </div>
         </div>
       </div>

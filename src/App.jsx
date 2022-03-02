@@ -10,19 +10,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddReview from './components/Reviews/AddReview/AddReview';
 
 const App = (props) => {
-    const {addReview, addMessage, updateNewReview, state} = props
+    const { state, dispatch } = props
     const { main_page_content, dialogs_content, user, gallery_content, review_page_content, navlinks, footer } = state
-    const pages = [{ 'link': '/', 'node': <MainPage content={main_page_content} /> },
-    {
-        'link': '/dialogs/*',
-        node: <Dialogs content={dialogs_content}
-            user={user} addMessage={addMessage} />
-    },
-    // { 'link': '/books', 'node': < /> },
-    { 'link': '/reviews', 'node': <Reviews reviews={review_page_content.reviews} /> },
-    // { 'link': '/store', 'node': < /> },
-    { 'link': '/gallery', 'node': <Gallery content={gallery_content} /> },
-    { 'link': '/add_review', 'node': <AddReview new_review={review_page_content.new_review} addReview={addReview} updateNewReview={updateNewReview} /> }]
+    const pages =
+        [{ 'link': '/', 'node': <MainPage content={main_page_content} /> },
+        {
+            'link': '/dialogs/*',
+            node: <Dialogs content={dialogs_content}
+                user={user} dispatch={dispatch} />
+        },
+        { 'link': '/reviews', 'node': <Reviews reviews={review_page_content.reviews} /> },
+        { 'link': '/gallery', 'node': <Gallery content={gallery_content} /> },
+        { 'link': '/add_review', 'node': <AddReview new_review={review_page_content.new_review} dispatch={dispatch} /> }]
 
     return (
         <BrowserRouter>

@@ -1,0 +1,10 @@
+.amount {
+    width: 10%;
+    border-radius: 0px;
+    background-color: white;
+    color: black;
+}
+
+.amount:empty::after {
+    margin-left: -4px;
+}

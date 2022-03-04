@@ -8,10 +8,11 @@ import Gallery from './components/Gallery/Gallery';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddReview from './components/Reviews/AddReview/AddReview';
+import Hiking from './components/Hiking/Hiking';
 
 const App = (props) => {
     const { state, dispatch } = props
-    const { main_page_content, dialogs_content, user, gallery_content, review_page_content, navlinks, footer } = state
+    const { main_page_content, dialogs_content, user, gallery_content, review_page_content, navlinks, footer, hiking } = state
     const pages =
         [{ 'link': '/', 'node': <MainPage content={main_page_content} /> },
         {
@@ -21,7 +22,8 @@ const App = (props) => {
         },
         { 'link': '/reviews', 'node': <Reviews reviews={review_page_content.reviews} /> },
         { 'link': '/gallery', 'node': <Gallery content={gallery_content} /> },
-        { 'link': '/add_review', 'node': <AddReview new_review={review_page_content.new_review} dispatch={dispatch} /> }]
+        { 'link': '/add_review', 'node': <AddReview new_review={review_page_content.new_review} dispatch={dispatch} /> },
+        { 'link': '/hiking', 'node': <Hiking content={hiking} dispatch={dispatch} /> }]
 
     return (
         <BrowserRouter>

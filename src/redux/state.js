@@ -1,12 +1,16 @@
+import { hiking } from './hike_bd'
+
 let store = {
     _state: {
+        hiking: hiking,
         navlinks: [
             { 'link': '/', 'text': 'Главная' },
             { 'link': '/reviews', 'text': 'Рецензии' },
             { 'link': '/gallery', 'text': 'Галерея' },
             { 'link': '/dialogs', 'text': 'Чат' },
             { 'link': '/books', 'text': 'Книги' },
-            { 'link': '/store', 'text': 'Магазинчик' }
+            { 'link': '/store', 'text': 'Магазинчик' },
+            { 'link': '/hiking', 'text': 'Путешествия' }
         ],
         review_page_content: {
             new_review: {
@@ -172,6 +176,11 @@ let store = {
             email: ''
         };
     },
+    selectHike(hike_id) {
+        console.log(`Selected hike ${hike_id}`)
+        this._state.hiking.selected_hike_id = hike_id
+        this._callSubscriber(this._state, this.dispatch.bind(this));
+    },
     getState() {
         return this._state;
     },
@@ -196,6 +205,8 @@ let store = {
         } else if (action.type === 'UPDATE-NEW-REVIEW') {
             this._state.review_page_content.new_review[action.key] = action.value;
             this._callSubscriber(this._state, this.dispatch.bind(this));
+        } else if (action.type === 'SELECT-HIKE') {
+            this.selectHike(action.hike_id)
         }
     }
 };

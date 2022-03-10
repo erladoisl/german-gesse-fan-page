@@ -6,11 +6,11 @@ import NewMessage from './NewMessage/NewMessage'
 import React from 'react';
 
 const Dialogs = (props) => {
-  const { dialogs, cur_dialog_id } = props.content;
+  const { dialogs, cur_dialog_id, new_messages } = props.content;
   const location = useLocation();
   const dialogId = location.state ? location.state.dialogId : 0;
+  let new_message = new_messages[dialogId] !== undefined ? new_messages[dialogId].text : ''
   console.log(`go to ${dialogId} dialog`);
-
 
   return (
     <div className="bg-dark text-white container">
@@ -57,7 +57,7 @@ const Dialogs = (props) => {
                   key={`message_${index}`} />
               )
             })}
-            <NewMessage dialogId={dialogId} user={props.user} dispatch = {props.dispatch} />
+            <NewMessage dialogId={dialogId} user={props.user} text={new_message} dispatch={props.dispatch} />
           </div>
         </div>
       </div>

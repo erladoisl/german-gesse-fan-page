@@ -3,8 +3,8 @@ import Review from "./Review/Review";
 import c from './Reviews.module.css'
 
 const Reviews = (props) => {
-    let {reviews} = props
-    
+    const { reviews } = props;
+
     return (
         <div className="bg-dark text-white">
             <h3 className={c.center}>Все рецензии:</h3>
@@ -26,6 +26,6 @@ const Reviews = (props) => {
             })}
         </div>
     );
-}
+};
 
-export default Reviews 
+export default Reviews;

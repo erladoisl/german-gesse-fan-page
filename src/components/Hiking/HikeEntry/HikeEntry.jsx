@@ -2,7 +2,7 @@ import Header from "./Header/Header";
 import HikeDay from "./HikeDay/HikeDay";
 
 const HikeEntry = (props) => {
-    let {calc_types, hike, dispatch} = props;
+    const {calc_types, hike, dispatch} = props;
 
     return (
         <div>

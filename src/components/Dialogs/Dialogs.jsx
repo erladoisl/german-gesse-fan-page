@@ -9,7 +9,7 @@ const Dialogs = (props) => {
   const { dialogs, cur_dialog_id, new_messages } = props.content;
   const location = useLocation();
   const dialogId = location.state ? location.state.dialogId : 0;
-  let new_message = new_messages[dialogId] !== undefined ? new_messages[dialogId].text : ''
+  const new_message = new_messages[dialogId] !== undefined ? new_messages[dialogId].text : ''
   console.log(`go to ${dialogId} dialog`);
 
   return (
@@ -27,7 +27,6 @@ const Dialogs = (props) => {
                   data={dialogs[id].messages[dialogs[id].messages.length - 1].data}
                   text={dialogs[id].messages[dialogs[id].messages.length - 1].text}
                   key={`message_${index}`}
-                  active={index === cur_dialog_id ? true : false}
                   avatar_url={dialogs[id].ava_url} />
               )
             })}

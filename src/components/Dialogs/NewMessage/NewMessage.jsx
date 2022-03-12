@@ -3,7 +3,7 @@ import { addMessageCreator, updateNewMessageCreator } from "../../../redux/dialo
 
 const NewMessage = (props) => {
     const dispatch = props.dispatch
-    let message = React.createRef()
+    const message = React.createRef()
 
     const addMessage = () => {
         dispatch(addMessageCreator(props.dialogId));

@@ -1,10 +1,10 @@
 import Ingredient from './Ingredient/Ingredient';
 
 const Menu = (props) => {
-    let {eating, dispatch, calc_types} = props;
+    const {eating, dispatch, calc_types} = props;
 
-    let changeType = () => {
-        console.log(`У .. тип вычисления изменился на ${this.innerText}`)
+    const changeType = () => {
+        console.log(`У .. тип вычисления изменился на ${this.innerText}`);
     };
 
     return (

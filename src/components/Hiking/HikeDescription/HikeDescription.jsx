@@ -1,8 +1,7 @@
 import { selectHikeCreator } from "../../../redux/hike-reducer";
 
 const HikeDescription = (props) => {
-    let hike = props.hike;
-
+    const hike = props.hike;
     const hikeOnClick = () => {
         props.dispatch(selectHikeCreator(props.hike_id));
     };

@@ -1,10 +1,10 @@
-import c from './Ingredient.module.css'
+import c from './Ingredient.module.css';
 
 const Ingredient = (props) => {
-    let { ingredient, dispatch, calc_types } = props;
+    const { ingredient, dispatch, calc_types } = props;
 
-    let changeType = () => {
-        console.log(`У .. тип вычисления изменился на ..`)
+    const changeType = () => {
+        console.log(`У .. тип вычисления изменился на ..`);
     };
 
     return (

@@ -8,6 +8,9 @@ const Navbar = (props) => {
         {props.navlinks.map((item, index) => {
           return <NavItem link={item.link} activeClassName={c.active} text={item.text}  key={`NavItem_${index}`}/>
         })}
+        <li className="nav-item">
+          <a className="nav-link" href="https://www.youtube.com/playlist?list=PLcvhF2Wqh7DNVy1OCUpG3i5lyxyBWhGZ8">React</a>
+        </li>
       </ul>
     </div>
   )

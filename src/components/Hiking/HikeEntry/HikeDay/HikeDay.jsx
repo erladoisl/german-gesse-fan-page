@@ -18,7 +18,6 @@ const HikeDay = (props) => {
             </div>
         </div>
     );
-    ;
-}
+};
 
-export default HikeDay
+export default HikeDay;

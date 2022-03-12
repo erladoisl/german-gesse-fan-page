@@ -1,5 +1,5 @@
-import Header from "./Header/Header"
-import HikeDay from "./HikeDay/HikeDay"
+import Header from "./Header/Header";
+import HikeDay from "./HikeDay/HikeDay";
 
 const HikeEntry = (props) => {
     let {calc_types, hike, dispatch} = props;
@@ -13,7 +13,7 @@ const HikeEntry = (props) => {
                 })}
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default HikeEntry
+export default HikeEntry;

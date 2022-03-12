@@ -1,8 +1,8 @@
 import { dialogsReducer } from './dialogs-reducer';
+import { hikeReductor } from './hike-reducer';
 import { hiking } from './hike_bd'
 import { reviewReducer } from './review-reducer';
 
-const SELECT_HIKE = 'SELECT-HIKE';
 
 let store = {
     _state: {
@@ -170,11 +170,6 @@ let store = {
     _callSubscriber() {
         console.log('state changed');
     },
-    selectHike(hike_id) {
-        console.log(`Selected hike ${hike_id}`)
-        this._state.hiking.selected_hike_id = hike_id
-        this._callSubscriber(this._state, this.dispatch.bind(this));
-    },
     getState() {
         return this._state;
     },
@@ -183,12 +178,10 @@ let store = {
     },
     dispatch(action) {
         console.log(action)
-        this._state.review_page_content = reviewReducer(this._state.review_page_content, action)
-        this._state.dialogs_content = dialogsReducer(this._state.dialogs_content, action)
+        this._state.review_page_content = reviewReducer(this._state.review_page_content, action);
+        this._state.dialogs_content = dialogsReducer(this._state.dialogs_content, action);
+        this._state.hiking = hikeReductor(this._state.hiking, action);
 
-        if (action.type === SELECT_HIKE) {
-            this.selectHike(action.hike_id)
-        }
         this._callSubscriber(this._state, this.dispatch.bind(this));
     }
 };

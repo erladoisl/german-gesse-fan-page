@@ -1,9 +1,11 @@
-const HikeDescription = (props) => {
-    let hike = props.hike
+import { selectHikeCreator } from "../../../redux/hike-reducer";
 
-    const selectHike = () => {
-        props.dispatch({type: 'SELECT-HIKE', hike_id: props.hike_id})
-    }
+const HikeDescription = (props) => {
+    let hike = props.hike;
+
+    const hikeOnClick = () => {
+        props.dispatch(selectHikeCreator(props.hike_id));
+    };
 
     return (
         <div className="col-lg-4">
@@ -11,9 +13,9 @@ const HikeDescription = (props) => {
 
             <h2>{hike.name}</h2>
             <p>{hike.description}</p>
-            <p className="btn btn-secondary" onClick={selectHike}>Подробнее »</p>
+            <p className="btn btn-secondary" onClick={hikeOnClick}>Подробнее »</p>
         </div>
-    )
-}
+    );
+};
 
-export default HikeDescription
+export default HikeDescription;

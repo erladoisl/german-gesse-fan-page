@@ -1,15 +1,16 @@
+import { selectHikeCreator } from "../../redux/hike-reducer";
 import HikeDescription from "./HikeDescription/HikeDescription";
 import HikeEntry from "./HikeEntry/HikeEntry";
 
 const Hiking = (props) => {
-    const cur_hike_id = props.content.selected_hike_id
-    
+    const cur_hike_id = props.content.selected_hike_id;
     const regect_selected_hike = () => {
-        props.dispatch({type: 'SELECT-HIKE', hike_id: -1})
-    }
+        props.dispatch(selectHikeCreator(-1));
+    };
 
     if (cur_hike_id === -1) {
-        console.log('Opened all hikes page')
+        console.log('Opened all hikes page');
+
         return (
             <div className="row leaf text">
                 {Object.keys(props.content.hikes).map((hike_id) => {
@@ -24,10 +25,10 @@ const Hiking = (props) => {
         return (
             <div>
                 <p className="btn btn-secondary" onClick={regect_selected_hike}>« назад</p>
-                <HikeEntry hike={props.content.hikes[cur_hike_id]} calc_types={props.content.calc_types} dispatch={props.dispatch}/>
+                <HikeEntry hike={props.content.hikes[cur_hike_id]} calc_types={props.content.calc_types} dispatch={props.dispatch} />
             </div>
-        )
-    }
-}
+        );
+    };
+};
 
-export default Hiking
+export default Hiking;

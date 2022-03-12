@@ -1,10 +1,9 @@
 import c from './AddReview.module.css'
 import React from 'react';
 import Field from './Field/Field';
+import { addReviewCreator } from '../../../redux/review-reducer';
 
 const AddReview = (props) => {
-    // const new_review = props.new_review;
-
     const new_review = {
         content: React.createRef(),
         name: React.createRef(),
@@ -14,7 +13,7 @@ const AddReview = (props) => {
         ava_url: React.createRef()
     };
     const addReview = () => {
-        props.dispatch({'type': 'ADD-REVIEW'})
+        props.dispatch(addReviewCreator);
     };
 
     return (
@@ -46,4 +45,4 @@ const AddReview = (props) => {
     )
 }
 
-export default AddReview
+export default AddReview;

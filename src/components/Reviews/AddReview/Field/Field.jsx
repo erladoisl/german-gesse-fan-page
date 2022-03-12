@@ -1,3 +1,4 @@
+import { updateNewReviewCreator } from '../../../../redux/review-reducer'
 import c from './Field.module.css'
 
 const Field = (props) => {
@@ -12,13 +13,12 @@ const Field = (props) => {
             </div>
         </div>
     )
-}
+};
+
 
 const renderSwitchNode = function (type, placeholder, ref, value, key, dispatch) {
     const onFieldChange = () => {
-        value = ref.current.value;
-        console.log(value)
-        dispatch({type: 'UPDATE-NEW-REVIEW', key, value})
+        dispatch(updateNewReviewCreator(key, ref.current.value));
     }
     
     switch (type) {
@@ -32,6 +32,6 @@ const renderSwitchNode = function (type, placeholder, ref, value, key, dispatch)
         default:
             return <></>
     }
-}
+};
 
-export default Field
+export default Field;

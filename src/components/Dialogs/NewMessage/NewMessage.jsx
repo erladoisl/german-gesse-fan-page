@@ -1,16 +1,17 @@
 import React from "react"
+import { addMessageCreator, updateNewMessageCreator } from "../../../redux/dialogs-reducer";
 
 const NewMessage = (props) => {
     const dispatch = props.dispatch
     let message = React.createRef()
 
     const addMessage = () => {
-        dispatch({ type: 'ADD-MESSAGE', id: props.dialogId })
-        message.current.value = ''
+        dispatch(addMessageCreator(props.dialogId));
+        message.current.value = '';
     };
 
     const updateNewMessage = () => {
-        dispatch({ type: 'UPDATE-NEW-MESSAGE', id: props.dialogId, user_id: props.user.user_id, text: message.current.value })
+        dispatch(updateNewMessageCreator(props.dialogId, props.user.user_id, message.current.value));
     };
 
     return (
